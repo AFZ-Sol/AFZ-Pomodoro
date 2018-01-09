@@ -1,0 +1,28 @@
+* {
+	-fx-font-family: 'Varela Round';
+	-fx-text-fill: #00695C;
+}
+
+.jfxbutton{
+	-fx-content-display: center;
+}
+
+#title {
+	-fx-padding: 0.0 0.0 0.0 0.0;
+	-fx-font-size: 24.0px;
+	-fx-alignment: center;
+}
+
+#time {
+	-fx-content-display: center;
+	-fx-font-size: 45.0px;
+	-fx-letter-spacing: 10.0px;
+	-fx-alignment: center;
+	-fx-text-fill: #00695C;
+}
+
+.lblSessionAndGoals {
+	-fx-alignment: center;
+	-fx-font-size: 18.0px;
+	-fx-content-display: center;
+}
