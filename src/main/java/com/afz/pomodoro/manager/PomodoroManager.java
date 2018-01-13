@@ -1,6 +1,6 @@
-package com.afz.manager;
+package com.afz.pomodoro.manager;
 
-import com.afz.model.PomodoroSettings;
+import com.afz.pomodoro.model.PomodoroSettings;
 
 public class PomodoroManager {
 

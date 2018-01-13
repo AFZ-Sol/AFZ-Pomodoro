@@ -1,4 +1,4 @@
-package com.afz.model;
+package com.afz.pomodoro.model;
 
 public class PomodoroSettings {
 
