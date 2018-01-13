@@ -1,6 +1,6 @@
-package com.afz.manager;
+package com.afz.pomodoro.manager;
 
-import com.afz.model.PomodoroSettings;
+import com.afz.pomodoro.config.PomodoroSetting;
 
 public class PomodoroManager {
 
@@ -20,7 +20,7 @@ public class PomodoroManager {
 
     }
 
-    private void updateSettings(PomodoroSettings settings) {
+    private void updateSettings(PomodoroSetting settings) {
         // update GUI
     }
 }
