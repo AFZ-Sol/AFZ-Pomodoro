@@ -4,6 +4,8 @@ import com.afz.pomodoro.constants.AppConstants;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -52,7 +54,7 @@ public class PomodoroSettingUI {
 		lblSessionsPerDay.setFont(Font.font("Varela Round", FontWeight.BOLD, 12));
 
 		JFXButton btnSave = new JFXButton("Save");
-		JFXButton btnCancel = new JFXButton("Cancel");
+		final JFXButton btnCancel = new JFXButton("Cancel");
 		btnSave.setFont(Font.font("Varela Round", FontWeight.BOLD, 12));
 		btnCancel.setFont(Font.font("Varela Round", FontWeight.BOLD, 12));
 
@@ -76,6 +78,21 @@ public class PomodoroSettingUI {
 		gridpane.add(hbBtn, 2, 5);
 
 		root.getChildren().add(gridpane);
+
+		btnSave.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent e) {
+				System.err.println("Sign in button pressed");
+			}
+		});
+		
+		btnCancel.setOnAction(new EventHandler<ActionEvent>() {
+
+			public void handle(ActionEvent e) {
+				System.err.println("Cancel Button Pressed");
+				btnCancel.getScene().getWindow().hide();
+			}
+		});
 
 		Stage stage = new Stage();
 		Scene scene = new Scene(root, 400, 300);
