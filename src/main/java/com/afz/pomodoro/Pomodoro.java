@@ -3,8 +3,10 @@ package com.afz.pomodoro;
 import com.afz.pomodoro.constants.AppConstants;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Pomodoro extends Application {
@@ -13,13 +15,14 @@ public class Pomodoro extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root, 400, 400);
-			scene.getStylesheets().add(getClass().getResource("/gui/Pomodoro.fxml").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setTitle(AppConstants.APP_TITLE);
-
-			primaryStage.show();
+			Parent root = FXMLLoader.load(getClass().getResource("/gui/Pomodoro.fxml"));
+		    
+	        Scene scene = new Scene(root, 500, 400);
+	    
+	        primaryStage.setTitle(AppConstants.APP_TITLE);
+	        primaryStage.setScene(scene);
+	        primaryStage.show();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

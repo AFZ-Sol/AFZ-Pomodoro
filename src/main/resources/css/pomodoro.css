@@ -1,8 +1,7 @@
 * {
 	-fx-font-family: 'Varela Round';
-	-fx-text-fill: #00695C;
-	-fx-background-color:#E5E5E5;
 }
+	
 
 .jfxbutton{
 	-fx-content-display: center;
@@ -12,6 +11,7 @@
 	-fx-padding: 0.0 0.0 0.0 0.0;
 	-fx-font-size: 24.0px;
 	-fx-alignment: center;
+	-fx-text-fill: #00695C;
 }
 
 #time {
@@ -26,4 +26,5 @@
 	-fx-alignment: center;
 	-fx-font-size: 18.0px;
 	-fx-content-display: center;
+	-fx-text-fill: #00695C;
 }
