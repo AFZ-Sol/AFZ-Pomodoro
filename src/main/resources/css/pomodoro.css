@@ -28,3 +28,8 @@
 	-fx-content-display: center;
 	-fx-text-fill: #00695C;
 }
+
+.lblPomodoroSetting{
+	-fx-font-size: 14.0px;
+	-fx-font-family: 'Varela Round';
+}
