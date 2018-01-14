@@ -40,7 +40,7 @@ public class PomodoroController implements Initializable, Observer {
     
     @FXML public void handleNotificationSetting(ActionEvent event) {
     	NotificationSettingUI obj=new NotificationSettingUI();
-    	
+    	obj.createNotificationSettingDailog();
     }
 
     public void update(Observable o, Object arg) {

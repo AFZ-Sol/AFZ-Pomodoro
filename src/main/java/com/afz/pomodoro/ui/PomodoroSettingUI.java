@@ -22,18 +22,16 @@ import javafx.stage.Stage;
 
 public class PomodoroSettingUI {
 
-	// TODO define font in css
 	private static final Font LBL_FONT = Font.font("Varela Round", FontWeight.BOLD, 12);
 	String spinnerStyle = Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL;
-	String buttonStyle = "-fx-border-radius: 6.0px;-fx-border-width: 1.5px;-fx-border-style: solid;-fx-border-color: #000000;-fx-background-color: #FFFFFF;-fx-text-fill: ##FFFFFF;-fx-fill-width: true; -fx-pref-width: 100.0px;-fx-cursor: pointer;-fx-padding: 5.0px 5.0px 5.0px 5.0px;-fx-font-size: 18.0px;";
+	String buttonStyle = "-fx-border-style: none;-fx-background-color: #555555;-fx-text-fill: white;-fx-pref-width: 70.0px;-fx-cursor: pointer;-fx-padding: 0.0px 5.0px 0.0px 5.0px;-fx-font-size: 16.0px;";
 
 	private AnchorPane root = new AnchorPane();
-
-	JFXTextField spPomodoroDuration = new JFXTextField();
-	JFXTextField spShortBrakDuration = new JFXTextField();
-	JFXTextField spLongBreakDuration = new JFXTextField();
-	JFXTextField spSessionsBeforeLongBreak = new JFXTextField();
-	JFXTextField spSessionsPerDay = new JFXTextField();
+	Spinner<Integer> spPomodoroDuration = new Spinner<Integer>(20, 25, 20);
+	Spinner<Integer> spShortBrakDuration = new Spinner<Integer>(1, 5, 5);
+	Spinner<Integer> spLongBreakDuration = new Spinner<Integer>(10, 15, 90);
+	Spinner<Integer> spSessionsBeforeLongBreak = new Spinner<Integer>(1, 5, 4);
+	Spinner<Integer> spSessionsPerDay = new Spinner<Integer>(1, 20, 16);
 
 	public void createPomodoroSettingDialog() {
 
@@ -53,12 +51,6 @@ public class PomodoroSettingUI {
 		lblLongBreakDuration.setFont(LBL_FONT);
 		lblSessionsBeforeLongBreak.setFont(LBL_FONT);
 		lblSessionsPerDay.setFont(LBL_FONT);
-
-		Spinner<Integer> spPomodoroDuration = new Spinner<Integer>(20, 25, 20);
-		Spinner<Integer> spShortBrakDuration = new Spinner<Integer>(1, 5, 5);
-		Spinner<Integer> spLongBreakDuration = new Spinner<Integer>(10, 15, 15);
-		Spinner<Integer> spSessionsBeforeLongBreak = new Spinner<Integer>(1, 5, 4);
-		Spinner<Integer> spSessionsPerDay = new Spinner<Integer>(1, 20, 16);
 
 		spPomodoroDuration.getStyleClass().add(spinnerStyle);
 		spShortBrakDuration.getStyleClass().add(spinnerStyle);
@@ -137,11 +129,14 @@ public class PomodoroSettingUI {
 
 	private void loadPomodoroSettings() {
 		PomodoroSetting setting = PomodoroSetting.INSTANCE;
-		spPomodoroDuration.setText(String.valueOf(setting.getFocusTime()));
-		spShortBrakDuration.setText(String.valueOf(setting.getShortBreak()));
-		spLongBreakDuration.setText(String.valueOf(setting.getLongBreak()));
-		spSessionsBeforeLongBreak.setText(String.valueOf(setting.getSessionsBeforeLongBreak()));
-		spSessionsPerDay.setText(String.valueOf(setting.getSessionsPerDay()));
+		spPomodoroDuration.getValueFactory().setValue(Integer.parseInt(String.valueOf(setting.getFocusTime())));
+		spPomodoroDuration.getValueFactory().setValue(Integer.parseInt(String.valueOf(setting.getShortBreak())));
+		spPomodoroDuration.getValueFactory()
+				.setValue(Integer.parseInt(String.valueOf(setting.getSessionsBeforeLongBreak())));
+		spPomodoroDuration.getValueFactory()
+				.setValue(Integer.parseInt(String.valueOf(setting.getSessionsBeforeLongBreak())));
+		spPomodoroDuration.getValueFactory().setValue(Integer.parseInt(String.valueOf(setting.getSessionsPerDay())));
+
 	}
 
 	private void savePomodoroSettings() {
