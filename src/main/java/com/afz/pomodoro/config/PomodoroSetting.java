@@ -1,12 +1,40 @@
 package com.afz.pomodoro.config;
 
-public class PomodoroSetting {
+public class PomodoroSetting extends SharedSetting {
 
     private int focusTime = 25; // 25 minutes
     private int shortBreak = 5; // 5 minutes
     private int longBreak = 15; // 15 minutes
-    private int roundsBeforeLongBreak = 4; // e.g. long break 4 sessions
+    private int sessionsBeforeLongBreak = 4; // e.g. long break 4 sessions
     private int sessionsPerDay = 16; // e.g. 16 sessions for 8 hours
+
+    public static final PomodoroSetting INSTANCE = new PomodoroSetting();
+
+    private PomodoroSetting() {
+        loadSetting();
+    }
+
+    public void update(int focusTime, int shortBreak, int longBreak, int sessionsBeforeLongBreak, int sessionsPerDay) {
+        this.focusTime = focusTime;
+        this.shortBreak = shortBreak;
+        this.longBreak = longBreak;
+        this.sessionsBeforeLongBreak = sessionsBeforeLongBreak;
+        this.sessionsPerDay = sessionsPerDay;
+        setChanged();
+        notifyObservers();
+    }
+
+    private void loadSetting() {
+        System.err.println("Loading pomodoro settings.");
+        super.loadSettingFromFile();
+        // Read and validate settings
+    }
+
+    public void saveSetting() {
+        // Save curret settings in file
+        System.err.println("Saving pomodoro settings.");
+        super.saveSettingInFile();
+    }
 
     public int getFocusTime() {
         return focusTime;
@@ -32,12 +60,12 @@ public class PomodoroSetting {
         this.longBreak = longBreak;
     }
 
-    public int getRoundsBeforeLongBreak() {
-        return roundsBeforeLongBreak;
+    public int getSessionsBeforeLongBreak() {
+        return sessionsBeforeLongBreak;
     }
 
-    public void setRoundsBeforeLongBreak(int roundsBeforeLongBreak) {
-        this.roundsBeforeLongBreak = roundsBeforeLongBreak;
+    public void setSessionsBeforeLongBreak(int sessionsBeforeLongBreak) {
+        this.sessionsBeforeLongBreak = sessionsBeforeLongBreak;
     }
 
     public int getSessionsPerDay() {
@@ -51,7 +79,7 @@ public class PomodoroSetting {
     @Override
     public String toString() {
         return "PomodoroSetting [focusTime=" + focusTime + ", shortBreak=" + shortBreak + ", longBreak=" + longBreak
-                + ", roundsBeforeLongBreak=" + roundsBeforeLongBreak + ", sessionsPerDay=" + sessionsPerDay + "]";
+                + ", roundsBeforeLongBreak=" + sessionsBeforeLongBreak + ", sessionsPerDay=" + sessionsPerDay + "]";
     }
 
 }
