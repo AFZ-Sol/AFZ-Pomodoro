@@ -14,7 +14,7 @@
 	-fx-text-fill: #00695C;
 }
 
-#time {
+#lblTime {
 	-fx-content-display: center;
 	-fx-font-size: 70.0px;
 	-fx-letter-spacing: 10.0px;
