@@ -6,6 +6,7 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 import com.afz.pomodoro.config.PomodoroSetting;
+import com.afz.pomodoro.ui.NotificationSettingUI;
 import com.afz.pomodoro.ui.PomodoroSettingUI;
 
 import javafx.event.ActionEvent;
@@ -35,6 +36,11 @@ public class PomodoroController implements Initializable, Observer {
         PomodoroSettingUI ref = new PomodoroSettingUI();
         ref.createPomodoroSettingDialog();
 
+    }
+    
+    @FXML public void handleNotificationSetting(ActionEvent event) {
+    	NotificationSettingUI obj=new NotificationSettingUI();
+    	
     }
 
     public void update(Observable o, Object arg) {

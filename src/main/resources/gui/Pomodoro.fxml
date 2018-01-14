@@ -24,7 +24,7 @@
 				<Menu mnemonicParsing="false" text="Preferences">
 					<items>
 						<MenuItem mnemonicParsing="false" onAction="#handlePomodoroSetting" text="Pomodoro Setting" />
-						<MenuItem mnemonicParsing="false" text="Notification Setting" />
+						<MenuItem mnemonicParsing="false" onAction="#handleNotificationSetting" text="Notification Setting" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Help">
