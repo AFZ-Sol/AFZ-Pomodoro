@@ -27,11 +27,11 @@ public class PomodoroSettingUI {
 	String buttonStyle = "-fx-border-style: none;-fx-background-color: #555555;-fx-text-fill: white;-fx-pref-width: 70.0px;-fx-cursor: pointer;-fx-padding: 0.0px 5.0px 0.0px 5.0px;-fx-font-size: 16.0px;";
 
 	private AnchorPane root = new AnchorPane();
-	Spinner<Integer> spPomodoroDuration = new Spinner<Integer>(20, 25, 20);
-	Spinner<Integer> spShortBrakDuration = new Spinner<Integer>(1, 5, 5);
-	Spinner<Integer> spLongBreakDuration = new Spinner<Integer>(10, 15, 90);
-	Spinner<Integer> spSessionsBeforeLongBreak = new Spinner<Integer>(1, 5, 4);
-	Spinner<Integer> spSessionsPerDay = new Spinner<Integer>(1, 20, 16);
+	Spinner<Integer> spPomodoroDuration = new Spinner<Integer>(15, 25, 45);
+	Spinner<Integer> spShortBrakDuration = new Spinner<Integer>(3, 5, 10);
+	Spinner<Integer> spLongBreakDuration = new Spinner<Integer>(10, 15, 20);
+	Spinner<Integer> spSessionsBeforeLongBreak = new Spinner<Integer>(2, 5, 5);
+	Spinner<Integer> spSessionsPerDay = new Spinner<Integer>(5, 20, 25);
 
 	public void createPomodoroSettingDialog() {
 
