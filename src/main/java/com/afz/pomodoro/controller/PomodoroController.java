@@ -4,56 +4,75 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
-
+import javafx.scene.control.Alert.*;
 import com.afz.pomodoro.config.PomodoroSetting;
+import com.afz.pomodoro.constants.AppConstants;
 import com.afz.pomodoro.ui.NotificationSettingUI;
 import com.afz.pomodoro.ui.PomodoroSettingUI;
-
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
+@SuppressWarnings("restriction")
 public class PomodoroController implements Initializable, Observer {
 
-    // Define all FXML components here
-    @FXML
-    Label lblTime;
+	// Define all FXML components here
+	@FXML
+	Label lblTime;
 
-    public PomodoroController() {
-        PomodoroSetting.INSTANCE.addObserver(this);
-    }
+	public PomodoroController() {
+		PomodoroSetting.INSTANCE.addObserver(this);
+	}
 
-    public void initialize(URL location, ResourceBundle resources) {
-        System.err.println("Initialze");
-        updateGui(PomodoroSetting.INSTANCE);
+	public void initialize(URL location, ResourceBundle resources) {
+		System.err.println("Initialze");
+		updateGui(PomodoroSetting.INSTANCE);
 
-    }
+	}
 
-    @FXML
-    public void handlePomodoroSetting(ActionEvent event) {
+	@FXML
+	public void handleExit(ActionEvent event) {
+		System.exit(0);
+	}
 
-        PomodoroSettingUI ref = new PomodoroSettingUI();
-        ref.createPomodoroSettingDialog();
+	@FXML
+	public void handlePomodoroSetting(ActionEvent event) {
+		PomodoroSettingUI ref = new PomodoroSettingUI();
+		ref.createPomodoroSettingDialog();
 
-    }
-    
-    @FXML public void handleNotificationSetting(ActionEvent event) {
-    	NotificationSettingUI obj=new NotificationSettingUI();
-    	obj.createNotificationSettingDailog();
-    }
+	}
 
-    public void update(Observable o, Object arg) {
-        if (o instanceof PomodoroSetting) {
-            System.err.println("Pomodoro settings updated." + o);
-            System.out.println(PomodoroSetting.INSTANCE);
-            updateGui(PomodoroSetting.INSTANCE);
-        }
-    }
+	@FXML
+	public void handleNotificationSetting(ActionEvent event) {
+		NotificationSettingUI obj = new NotificationSettingUI();
+		obj.createNotificationSettingDailog();
+	}
 
-    private void updateGui(PomodoroSetting setting) {
-        // update Gui elements with setting
-        lblTime.setText(String.valueOf(setting.getFocusTime()));
-    }
+	@FXML
+	public void handleAboutAFZPomodoro(ActionEvent event) {
+
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(AppConstants.APP_TITLE);
+		alert.setHeaderText("AFZ - Pemodoro");
+		alert.setContentText(
+				"Developed by:\t\tMuhammad Awais\nDepartment of:\tComputer Sciences\nStudent of:\t\tCOMSATS Institute of Information\n\t\t\t\tTechnology, Wah Cantt");
+
+		alert.showAndWait();
+	}
+
+	public void update(Observable o, Object arg) {
+		if (o instanceof PomodoroSetting) {
+			System.err.println("Pomodoro settings updated." + o);
+			System.out.println(PomodoroSetting.INSTANCE);
+			updateGui(PomodoroSetting.INSTANCE);
+		}
+	}
+
+	private void updateGui(PomodoroSetting setting) {
+		// update Gui elements with setting
+		lblTime.setText(String.valueOf(setting.getFocusTime()));
+	}
 
 }

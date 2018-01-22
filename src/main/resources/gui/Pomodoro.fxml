@@ -16,7 +16,7 @@
 			<menus>
 				<Menu mnemonicParsing="false" text="File">
 					<items>
-						<MenuItem mnemonicParsing="false" text="Exit" />
+						<MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Preferences">
@@ -27,7 +27,7 @@
 				</Menu>
 				<Menu mnemonicParsing="false" text="Help">
 					<items>
-						<MenuItem mnemonicParsing="false" text="About AFZ-Pomodoro" />
+						<MenuItem mnemonicParsing="false" onAction="#handleAboutAFZPomodoro" text="About AFZ-Pomodoro" />
 					</items>
 				</Menu>
 			</menus>
