@@ -75,7 +75,7 @@ public class PomodoroSettingUI {
 		}
 
 		HBox hbBtn = new HBox(30);
-		hbBtn.setAlignment(Pos.CENTER);
+		hbBtn.setAlignment(Pos.CENTER_RIGHT);
 		hbBtn.getChildren().add(btnSave);
 		hbBtn.getChildren().add(btnCancel);
 

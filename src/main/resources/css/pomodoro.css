@@ -1,35 +1,46 @@
 * {
 	-fx-font-family: 'Varela Round';
 }
-	
 
-.jfxbutton{
+.jfxbutton {
 	-fx-content-display: center;
+	-fx-border-style: none;
+	-fx-background-color: #555555;
+	-fx-text-fill: white;
+	-fx-pref-width: 70.0px;
+	-fx-cursor: pointer;
+	-fx-padding: 0.0px 5.0px 0.0px 5.0px;
+	-fx-font-size: 16.0px;
 }
 
 #title {
 	-fx-padding: 0.0 0.0 0.0 0.0;
 	-fx-font-size: 24.0px;
 	-fx-alignment: center;
-	-fx-text-fill: #00695C;
+	-fx-text-fill: #000000;
+	-fx-background-color: #F2994A;
 }
 
 #lblTime {
 	-fx-content-display: center;
-	-fx-font-size: 70.0px;
+	-fx-font-size: 48.0px;
 	-fx-letter-spacing: 10.0px;
 	-fx-alignment: center;
-	-fx-text-fill: #00695C;
+	-fx-text-fill: #000000;
+	-fx-background-color: #6FCF97;
+}
+
+.lblSessionAndGoalsCounts {
+	-fx-alignment: center;
+	-fx-font-size: 36.0px;
+	-fx-content-display: center;
+	-fx-text-fill: #000000;
+	-fx-background-color: #27AE60;
 }
 
 .lblSessionAndGoals {
 	-fx-alignment: center;
-	-fx-font-size: 18.0px;
+	-fx-font-size: 24.0px;
 	-fx-content-display: center;
-	-fx-text-fill: #00695C;
-}
-
-.lblPomodoroSetting{
-	-fx-font-size: 14.0px;
-	-fx-font-family: 'Varela Round';
+	-fx-text-fill: #000000;
 }
