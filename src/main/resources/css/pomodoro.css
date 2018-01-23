@@ -2,6 +2,13 @@
 	-fx-font-family: 'Varela Round';
 }
 
+.jfxLabel {
+	-fx-padding: 0.0 0.0 0.0 0.0;
+	-fx-font-size: 20.0px;
+	-fx-alignment: center;
+	-fx-text-fill: #000000;
+}
+
 .jfxbutton {
 	-fx-content-display: center;
 	-fx-border-style: none;
@@ -13,7 +20,7 @@
 	-fx-font-size: 16.0px;
 }
 
-#title {
+#lblTitle {
 	-fx-padding: 0.0 0.0 0.0 0.0;
 	-fx-font-size: 24.0px;
 	-fx-alignment: center;

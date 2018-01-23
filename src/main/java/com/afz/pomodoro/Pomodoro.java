@@ -8,11 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-@SuppressWarnings("restriction")
 public class Pomodoro extends Application {
 
-    
     public void start(Stage primaryStage) throws Exception {
 
         try {
