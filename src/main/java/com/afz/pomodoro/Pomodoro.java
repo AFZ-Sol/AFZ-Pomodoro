@@ -8,15 +8,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+@SuppressWarnings("restriction")
 public class Pomodoro extends Application {
 
-    @Override
+    
     public void start(Stage primaryStage) throws Exception {
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/gui/Pomodoro.fxml"));
 
-            Scene scene = new Scene(root, 500, 400);
+            Scene scene = new Scene(root, 450, 300);
 
             primaryStage.setTitle(AppConstants.APP_TITLE);
             primaryStage.setScene(scene);
