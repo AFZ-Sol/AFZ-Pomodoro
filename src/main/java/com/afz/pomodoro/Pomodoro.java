@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Pomodoro extends Application {
@@ -15,9 +16,10 @@ public class Pomodoro extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/gui/Pomodoro.fxml"));
 
-            Scene scene = new Scene(root, 450, 300);
+            Scene scene = new Scene(root, 350, 250);
 
             primaryStage.setTitle(AppConstants.APP_TITLE);
+            primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(AppConstants.ICON_APPLICATION)));
             primaryStage.setScene(scene);
             primaryStage.show();
 

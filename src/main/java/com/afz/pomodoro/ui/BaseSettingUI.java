@@ -1,15 +1,25 @@
 package com.afz.pomodoro.ui;
 
+import com.afz.pomodoro.constants.AppConstants;
+import com.jfoenix.controls.JFXToggleButton;
+
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class BaseSettingUI {
 
-    protected static final String BTN_STYLE = "jfxbutton";
-    protected static final String LBL_STYLE = "jfxLabel";
-    String spinnerStyle = Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL;
-    int SPINNER_WIDTH = 100; // use css
+    private static final String BTN_STYLE = "jfxbutton";
+    private static final String LBL_STYLE = "jfxLabel";
+    private static final String SPINNER_STYLE = Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL;
+    private static final int SPINNER_WIDTH = 100; // use css
+    private static final int TBTN_HEIGHT = 20;
 
     protected Label createLabel(String text) {
 
@@ -19,12 +29,38 @@ public class BaseSettingUI {
     }
 
     protected Button createButton(String label) {
-        // create button and apply style
-        return null;
+        Button btn = new Button(label);
+        btn.getStyleClass().add(BTN_STYLE);
+        return btn;
     }
 
-    protected Spinner<Integer> createSpinner(int min, int max, int value) {
-        return null;
+    protected Spinner<Integer> createSpinner(int min, int max, int initialValue) {
+        Spinner<Integer> sp = new Spinner<>(min, max, initialValue);
+        sp.getStyleClass().add(SPINNER_STYLE);
+        sp.setMaxWidth(SPINNER_WIDTH);
+        return sp;
+    }
+
+    protected JFXToggleButton createToggleButton() {
+        JFXToggleButton tb = new JFXToggleButton();
+        tb.setMaxHeight(TBTN_HEIGHT);
+        return tb;
+
+    }
+
+    protected void showDialog(AnchorPane root, String title) {
+        Stage stage = new Stage();
+        Scene scene = new Scene(root, 350, 320);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle(title);
+        // This will load style from CSS
+        scene.getStylesheets().add(getClass().getResource("/css/pomodoro.css").toExternalForm());
+        stage.getIcons().add(new Image(getClass().getResourceAsStream(AppConstants.ICON_SETTING)));
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.centerOnScreen();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

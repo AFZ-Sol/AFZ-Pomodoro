@@ -4,7 +4,7 @@
 
 .jfxLabel {
 	-fx-padding: 0.0 0.0 0.0 0.0;
-	-fx-font-size: 20.0px;
+	-fx-font-size: 14.0px;
 	-fx-alignment: center;
 	-fx-text-fill: #000000;
 }
@@ -39,7 +39,7 @@
 
 .lblSessionAndGoalsCounts {
 	-fx-alignment: center;
-	-fx-font-size: 36.0px;
+	-fx-font-size: 30.0px;
 	-fx-content-display: center;
 	-fx-text-fill: #000000;
 	-fx-background-color: #27AE60;
@@ -47,7 +47,8 @@
 
 .lblSessionAndGoals {
 	-fx-alignment: center;
-	-fx-font-size: 24.0px;
+	-fx-font-size: 22.0px;
 	-fx-content-display: center;
 	-fx-text-fill: #000000;
 }
+
