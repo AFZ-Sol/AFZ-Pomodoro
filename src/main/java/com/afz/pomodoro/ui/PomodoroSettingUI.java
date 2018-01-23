@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.AnchorPane;
@@ -17,11 +18,11 @@ import javafx.stage.Stage;
 
 public class PomodoroSettingUI extends BaseSettingUI {
 
-    Spinner<Integer> spPomodoroDuration = new Spinner<>(15, 25, 45);
-    Spinner<Integer> spShortBrakDuration = new Spinner<>(3, 5, 10);
-    Spinner<Integer> spLongBreakDuration = new Spinner<>(10, 15, 20);
-    Spinner<Integer> spSessionsBeforeLongBreak = new Spinner<>(2, 5, 5);
-    Spinner<Integer> spSessionsPerDay = new Spinner<>(5, 20, 25);
+    Spinner<Integer> spPomodoroDuration;
+    Spinner<Integer> spShortBrakDuration;
+    Spinner<Integer> spLongBreakDuration;
+    Spinner<Integer> spSessionsBeforeLongBreak;
+    Spinner<Integer> spSessionsPerDay;
 
     public void createPomodoroSettingDialog() {
 
@@ -32,17 +33,11 @@ public class PomodoroSettingUI extends BaseSettingUI {
         Label lblSessionsPerDay = createLabel("Sessions Per Day :");
 
         // TODO use createSpinner() method
-        spPomodoroDuration.getStyleClass().add(spinnerStyle);
-        spShortBrakDuration.getStyleClass().add(spinnerStyle);
-        spLongBreakDuration.getStyleClass().add(spinnerStyle);
-        spSessionsBeforeLongBreak.getStyleClass().add(spinnerStyle);
-        spSessionsPerDay.getStyleClass().add(spinnerStyle);
-
-        spPomodoroDuration.setMaxWidth(SPINNER_WIDTH);
-        spShortBrakDuration.setMaxWidth(SPINNER_WIDTH);
-        spLongBreakDuration.setMaxWidth(SPINNER_WIDTH);
-        spSessionsBeforeLongBreak.setMaxWidth(SPINNER_WIDTH);
-        spSessionsPerDay.setMaxWidth(SPINNER_WIDTH);
+        spPomodoroDuration = createSpinner(15, 45, 25);
+        spShortBrakDuration = createSpinner(3, 10, 5);
+        spLongBreakDuration = createSpinner(10, 20, 15);
+        spSessionsBeforeLongBreak = createSpinner(2, 5, 4);
+        spSessionsPerDay = createSpinner(5, 55, 16);
 
         // Labels grid
         GridPane gridpane = new GridPane();
@@ -64,10 +59,8 @@ public class PomodoroSettingUI extends BaseSettingUI {
 
         // Buttons grid
         // TODO use createButton()
-        JFXButton btnSave = new JFXButton("Save");
-        JFXButton btnCancel = new JFXButton("Cancel");
-        btnSave.getStyleClass().add(BTN_STYLE);
-        btnCancel.getStyleClass().add(BTN_STYLE);
+        Button btnSave = createButton("Save");
+        Button btnCancel = createButton("Cancel");
 
         HBox hbBtn = new HBox(30);
         hbBtn.setAlignment(Pos.CENTER_RIGHT);
@@ -75,9 +68,6 @@ public class PomodoroSettingUI extends BaseSettingUI {
         hbBtn.getChildren().add(btnCancel);
 
         gridpane.add(hbBtn, 1, 5, 2, 1);
-
-        AnchorPane root = new AnchorPane();
-        root.getChildren().add(gridpane);
 
         loadPomodoroSettings();
 
@@ -93,17 +83,9 @@ public class PomodoroSettingUI extends BaseSettingUI {
             btnCancel.getScene().getWindow().hide();
         });
 
-        Stage stage = new Stage();
-        Scene scene = new Scene(root, 350, 300);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle(AppConstants.POMODORO_TITLE);
-        // This will load style from CSS
-        scene.getStylesheets().add(getClass().getResource("/css/pomodoro.css").toExternalForm());
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.centerOnScreen();
-        stage.setScene(scene);
-        stage.show();
+        AnchorPane root = new AnchorPane();
+        root.getChildren().add(gridpane);
+        showDialog(root, AppConstants.POMODORO_SETTING_TITLE);
 
     }
 

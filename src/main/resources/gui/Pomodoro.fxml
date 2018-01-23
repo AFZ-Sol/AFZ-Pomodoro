@@ -29,14 +29,14 @@
 				</Menu>
 			</menus>
 		</MenuBar>
-				<Label alignment="CENTER" layoutX="14.0" layoutY="25.0" prefHeight="35.0" styleClass="lblSessionAndGoals" text="Goals" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="25.0" />
+				<Label alignment="CENTER" layoutX="14.0" layoutY="25.0" prefHeight="40.0" styleClass="lblSessionAndGoals" text="Goals" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="25.0" />
 
-				<Label fx:id="lblTitle" layoutX="123.0" layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" text="Focus Time" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="25.0" />
+				<Label fx:id="lblTitle" layoutX="123.0" layoutY="24.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" text="Focus Time" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="25.0" />
 
-				<Label alignment="CENTER" layoutX="268.0" layoutY="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" styleClass="lblSessionAndGoals" text="Sessions" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
-				<Label fx:id="lblTime" layoutX="100.0" layoutY="60.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" text="25:00 " AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="60.0" />
-				<Label fx:id="lblGoals" layoutX="6.0" layoutY="59.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" styleClass="lblSessionAndGoalsCounts" text="1 / 4" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="60.0" />
-				<Label fx:id="lblSessions" layoutX="268.0" layoutY="60.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" styleClass="lblSessionAndGoalsCounts" text="4 / 10" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" />
+				<Label alignment="CENTER" layoutX="268.0" layoutY="25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" styleClass="lblSessionAndGoals" text="Sessions" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
+				<Label fx:id="lblTime" layoutX="100.0" layoutY="60.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" text="25:00 " AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="65.0" />
+				<Label fx:id="lblGoals" layoutX="6.0" layoutY="59.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" styleClass="lblSessionAndGoalsCounts" text="1 / 4" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="65.0" />
+				<Label fx:id="lblSessions" layoutX="268.0" layoutY="60.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" styleClass="lblSessionAndGoalsCounts" text="4 / 10" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0" />
 				<!-- Buttons -->
 				<JFXButton fx:id="btnPlay" layoutX="100.0" layoutY="189.0" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="89.0" styleClass="jfxbutton" text="Play" />
 				<JFXButton fx:id="btnPause" layoutX="180.0" layoutY="189.0" maxWidth="1.7976931348623157E308" prefHeight="35.0" styleClass="jfxbutton" text="Pause" />
