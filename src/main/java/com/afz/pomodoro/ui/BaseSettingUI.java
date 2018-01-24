@@ -19,7 +19,7 @@ public class BaseSettingUI {
     private static final String LBL_STYLE = "jfxLabel";
     private static final String SPINNER_STYLE = Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL;
     private static final int SPINNER_WIDTH = 100; // use css
-    private static final int TBTN_HEIGHT = 20;
+
 
     protected Label createLabel(String text) {
 
@@ -44,7 +44,7 @@ public class BaseSettingUI {
     protected JFXToggleButton createToggleButton(String string) {
         JFXToggleButton tb = new JFXToggleButton();
         tb.setText(string);
-        tb.setMaxHeight(TBTN_HEIGHT);
+        tb.getStyleClass().add(LBL_STYLE);
         return tb;
 
     }
