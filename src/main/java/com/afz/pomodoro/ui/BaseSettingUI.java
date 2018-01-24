@@ -41,16 +41,17 @@ public class BaseSettingUI {
         return sp;
     }
 
-    protected JFXToggleButton createToggleButton() {
+    protected JFXToggleButton createToggleButton(String string) {
         JFXToggleButton tb = new JFXToggleButton();
+        tb.setText(string);
         tb.setMaxHeight(TBTN_HEIGHT);
         return tb;
 
     }
 
-    protected void showDialog(AnchorPane root, String title) {
+    protected void showDialog(AnchorPane root, String title, double width, double height) {
         Stage stage = new Stage();
-        Scene scene = new Scene(root, 350, 320);
+        Scene scene = new Scene(root, width, height);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle(title);
         // This will load style from CSS

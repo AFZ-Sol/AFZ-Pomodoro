@@ -85,7 +85,7 @@ public class PomodoroSettingUI extends BaseSettingUI {
 
         AnchorPane root = new AnchorPane();
         root.getChildren().add(gridpane);
-        showDialog(root, AppConstants.POMODORO_SETTING_TITLE);
+        showDialog(root, AppConstants.POMODORO_SETTING_TITLE, AppConstants.POMODORO_SETTING_WIDTH, AppConstants.POMODORO_SETTING_HEIGHT);
 
     }
 

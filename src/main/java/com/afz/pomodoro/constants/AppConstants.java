@@ -8,6 +8,12 @@ public class AppConstants {
     public final static String POMODORO_SETTING_TITLE = "Pomodoro Setting";
     public final static String NOTIFICATION_SETTING_TITLE = "Notifications Setting";
 
+    public final static double NOTIFICATION_SETTING_HEIGHT = 440;
+    public final static double NOTIFICATION_SETTING_WIDTH = 350;
+
+    public final static double POMODORO_SETTING_HEIGHT = 300;
+    public final static double POMODORO_SETTING_WIDTH = 350;
+
     public final static String ICON_APPLICATION = "/images/pomodoro_icon.jpg";
     public final static String ICON_SETTING = "/images/Settings-icon.png";
 

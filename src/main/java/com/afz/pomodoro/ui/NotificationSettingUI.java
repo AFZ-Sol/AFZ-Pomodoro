@@ -1,5 +1,6 @@
 package com.afz.pomodoro.ui;
 
+import com.afz.pomodoro.config.NotificationsSetting;
 import com.afz.pomodoro.constants.AppConstants;
 import com.jfoenix.controls.JFXToggleButton;
 
@@ -15,10 +16,13 @@ import javafx.scene.text.FontWeight;
 
 public class NotificationSettingUI extends BaseSettingUI {
 
-    JFXToggleButton stnAfterFocusTime;
-    JFXToggleButton stnAfterBreakTime;
-    JFXToggleButton plsAfterFocusTime;
-    JFXToggleButton plsAfterBreakTime;
+    JFXToggleButton notificationBeforeFocus;
+    JFXToggleButton notificationBeforeShortBreak;
+    JFXToggleButton notificationBeforeLongBreak;
+
+    JFXToggleButton soundBeforeFocus;
+    JFXToggleButton soundBeforeShortBreak;
+    JFXToggleButton soundBeforeLongBreak;
 
     public void createNotificationSettingDailog() {
 
@@ -29,38 +33,31 @@ public class NotificationSettingUI extends BaseSettingUI {
         Label lblShowTrayNotifications = createLabel("Show Tray Notifications :");
         Label lblPlaySoundNotifications = createLabel("Play Sound Notifications :");
 
-        Label lblstnAfterFocusTime = createLabel("After Focus Time :");
-        Label lblstnAfterBreakTime = createLabel("After Break Time :");
-        Label lblplsAfterFocusTime = createLabel("After Focus Time :");
-        Label lblplsAfterBreakTime = createLabel("After Break Time :");
+        notificationBeforeFocus = createToggleButton("Before Focus Time");
+        notificationBeforeShortBreak = createToggleButton("Before Short Break");
+        notificationBeforeLongBreak = createToggleButton("Before Long Break");
 
-        stnAfterFocusTime = createToggleButton();
-        stnAfterBreakTime = createToggleButton();
-        plsAfterFocusTime = createToggleButton();
-        plsAfterBreakTime = createToggleButton();
-
-        gridpane.add(lblShowTrayNotifications, 1, 0);
-        gridpane.add(lblPlaySoundNotifications, 1, 3);
-
-        gridpane.add(lblstnAfterFocusTime, 1, 1);
-        gridpane.add(lblstnAfterBreakTime, 1, 2);
-        gridpane.add(lblplsAfterFocusTime, 1, 4);
-        gridpane.add(lblplsAfterBreakTime, 1, 5);
-
-        gridpane.add(stnAfterFocusTime, 3, 1);
-        gridpane.add(stnAfterBreakTime, 3, 2);
-        gridpane.add(plsAfterFocusTime, 3, 4);
-        gridpane.add(plsAfterBreakTime, 3, 5);
+        soundBeforeFocus = createToggleButton("Before Focus Time");
+        soundBeforeShortBreak = createToggleButton("Before Short Break");
+        soundBeforeLongBreak = createToggleButton("Before Long Break");
 
         Button btnSave = createButton("Save");
         Button btnCancel = createButton("Cancel");
-
-        HBox hbBtn = new HBox(30);
+        HBox hbBtn = new HBox(20);
         hbBtn.setAlignment(Pos.CENTER_RIGHT);
         hbBtn.getChildren().add(btnSave);
         hbBtn.getChildren().add(btnCancel);
 
-        gridpane.add(hbBtn, 1, 6, 3, 1);
+        gridpane.add(lblShowTrayNotifications, 1, 0);
+        gridpane.add(notificationBeforeFocus, 1, 1);
+        gridpane.add(notificationBeforeShortBreak, 1, 2);
+        gridpane.add(notificationBeforeLongBreak, 1, 3);
+        gridpane.add(lblPlaySoundNotifications, 1, 4);
+
+        gridpane.add(soundBeforeFocus, 1, 5);
+        gridpane.add(soundBeforeShortBreak, 1, 6);
+        gridpane.add(soundBeforeLongBreak, 1, 7);
+        gridpane.add(hbBtn, 1, 8, 6, 1);
 
         loadPomodoroSettings();
 
@@ -77,17 +74,20 @@ public class NotificationSettingUI extends BaseSettingUI {
 
         AnchorPane root = new AnchorPane();
         root.getChildren().add(gridpane);
-        showDialog(root, AppConstants.NOTIFICATION_SETTING_TITLE);
+        showDialog(root, AppConstants.NOTIFICATION_SETTING_TITLE, AppConstants.NOTIFICATION_SETTING_WIDTH, AppConstants.NOTIFICATION_SETTING_HEIGHT);
     }
 
     private void loadPomodoroSettings() {
         // TODO load and initialize buttons with setting
         // NotificationsSetting
+        NotificationsSetting setting = NotificationsSetting.INSTANCE;
+
     }
 
     private void savePomodoroSettings() {
         // Get new values to save in file.
         // NotificationsSetting
+
     }
 
 }
