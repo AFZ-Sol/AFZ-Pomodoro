@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import com.afz.pomodoro.config.PomodoroSetting;
 import com.afz.pomodoro.constants.AppConstants;
+import com.afz.pomodoro.manager.PomodoroManager;
 import com.afz.pomodoro.ui.NotificationSettingUI;
 import com.afz.pomodoro.ui.PomodoroSettingUI;
 
@@ -33,6 +34,10 @@ public class PomodoroController implements Initializable, Observer {
     Button btnPlay;
     @FXML
     Button btnPause;
+    /////////////////////////////////////////////////////////////
+    private PomodoroManager manager;
+
+    ////////////////////////////////////////////////////////////
 
     public PomodoroController() {
         PomodoroSetting.INSTANCE.addObserver(this);
@@ -40,15 +45,27 @@ public class PomodoroController implements Initializable, Observer {
 
     public void initialize(URL location, ResourceBundle resources) {
         System.err.println("Initialze");
+        manager = new PomodoroManager();
         updateGui(PomodoroSetting.INSTANCE);
-
     }
 
     private void updateGui(PomodoroSetting setting) {
         // update Gui elements with setting
-        lblTime.setText(String.valueOf(setting.getFocusTime()));
-        lblGoals.setText(String.valueOf(setting.getSessionsBeforeLongBreak()));
-        lblSessions.setText(String.valueOf(setting.getSessionsPerDay()));
+        lblTime.setText(manager.getRemainingTime());
+        lblGoals.setText(manager.getGoalSessions());
+        lblSessions.setText(manager.getTodaySessions());
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    private void focusTimeStarted() {
+    }
+
+    private void shortBreakStarted() {
+
+    }
+
+    private void longBreakStarted() {
+
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +103,6 @@ public class PomodoroController implements Initializable, Observer {
     public void update(Observable o, Object arg) {
         if (o instanceof PomodoroSetting) {
             System.err.println("Pomodoro settings updated." + o);
-            System.out.println(PomodoroSetting.INSTANCE);
             updateGui(PomodoroSetting.INSTANCE);
         }
     }

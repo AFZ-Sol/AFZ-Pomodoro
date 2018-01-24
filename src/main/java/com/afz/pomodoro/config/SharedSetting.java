@@ -11,6 +11,6 @@ public abstract class SharedSetting extends Observable {
     }
 
     protected void saveSettingInFile() {
-        System.err.println("Saving setting from file." + AppConstants.CONFIG_FILE_PATH);
+        System.err.println("Saving setting in file." + AppConstants.CONFIG_FILE_PATH);
     }
 }

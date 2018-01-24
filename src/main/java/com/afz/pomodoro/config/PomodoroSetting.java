@@ -27,11 +27,11 @@ public class PomodoroSetting extends SharedSetting {
     private void loadSetting() {
         System.err.println("Loading pomodoro settings.");
         super.loadSettingFromFile();
-        // Read and validate settings
+        // TODO Read and validate settings
     }
 
     public void saveSetting() {
-        // Save curret settings in file
+        // TODO Save curret settings in file
         System.err.println("Saving pomodoro settings.");
         super.saveSettingInFile();
     }
