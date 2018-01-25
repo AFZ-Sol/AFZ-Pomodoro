@@ -83,86 +83,31 @@ public class NotificationSettingUI extends BaseSettingUI {
         // TODO load and initialize buttons with setting
         // NotificationsSetting
         NotificationsSetting setting = NotificationsSetting.INSTANCE;
-        if (setting.isNotificationBeforeFocus()) {
-            tbNotificationBeforeFocus.setSelected(true);
-        } else {
-            tbNotificationBeforeFocus.setSelected(false);
-        }
-        if (setting.isNotificationBeforeShortBreak()) {
-            tbNotificationBeforeShortBreak.setSelected(true);
-        } else {
-            tbNotificationBeforeShortBreak.setSelected(false);
-        }
-        if (setting.isNotificationBeforeLongBreak()) {
-            tbNotificationBeforeLongBreak.setSelected(true);
-        } else {
-            tbNotificationBeforeLongBreak.setSelected(false);
-        }
-        if (setting.isSoundBeforeFocus()) {
-            tbSoundBeforeFocus.setSelected(true);
-        } else {
-            tbSoundBeforeFocus.setSelected(false);
-        }
-        if (setting.isSoundBeforeShortBreak()) {
-            tbSoundBeforeShortBreak.setSelected(true);
-        } else {
-            tbSoundBeforeShortBreak.setSelected(false);
-        }
-        if (setting.isSoundBeforeLongBreak()) {
-            tbSoundBeforeLongBreak.setSelected(true);
-        } else {
-            tbSoundBeforeLongBreak.setSelected(false);
-        }
+        tbNotificationBeforeFocus.setSelected(setting.isNotificationBeforeFocus());
+        tbNotificationBeforeShortBreak.setSelected(setting.isNotificationBeforeShortBreak());
+        tbNotificationBeforeLongBreak.setSelected(setting.isNotificationBeforeLongBreak());
+        tbSoundBeforeFocus.setSelected(setting.isSoundBeforeFocus());
+        tbSoundBeforeShortBreak.setSelected(setting.isSoundBeforeShortBreak());
+        tbSoundBeforeLongBreak.setSelected(setting.isSoundBeforeLongBreak());
     }
 
     private void savePomodoroSettings() {
         // Get new values to save in file.
         // NotificationsSetting
-        boolean notificationBeforeFocus;
-        boolean notificationBeforeShortBreak;
-        boolean notificationBeforeLongBreak;
+        boolean notificationBeforeFocus = tbNotificationBeforeFocus.isSelected();
+        boolean notificationBeforeShortBreak = tbNotificationBeforeShortBreak.isSelected();
+        boolean notificationBeforeLongBreak = tbNotificationBeforeLongBreak.isSelected();
 
         /**
          * Play sound notifications
          */
-        boolean soundBeforeFocus;
-        boolean soundBeforeShortBreak;
-        boolean soundBeforeLongBreak;
-
-        if (tbNotificationBeforeFocus.isSelected()) {
-            notificationBeforeFocus = true;
-        } else {
-            notificationBeforeFocus = false;
-        }
-        if (tbNotificationBeforeShortBreak.isSelected()) {
-            notificationBeforeShortBreak = true;
-        } else {
-            notificationBeforeShortBreak = false;
-        }
-        if (tbNotificationBeforeLongBreak.isSelected()) {
-            notificationBeforeLongBreak = true;
-        } else {
-            notificationBeforeLongBreak = false;
-        }
-        if (tbSoundBeforeFocus.isSelected()) {
-            soundBeforeFocus = true;
-        } else {
-            soundBeforeFocus = false;
-        }
-        if (tbSoundBeforeShortBreak.isSelected()) {
-            soundBeforeShortBreak = true;
-        } else {
-            soundBeforeShortBreak = false;
-        }
-        if (tbSoundBeforeLongBreak.isSelected()) {
-            soundBeforeLongBreak = true;
-        } else {
-            soundBeforeLongBreak = false;
-        }
+        boolean soundBeforeFocus = tbSoundBeforeFocus.isSelected();
+        boolean soundBeforeShortBreak = tbSoundBeforeShortBreak.isSelected();
+        boolean soundBeforeLongBreak = tbSoundBeforeLongBreak.isSelected();
 
         NotificationsSetting.INSTANCE.update(notificationBeforeFocus, notificationBeforeShortBreak,
                 notificationBeforeLongBreak, soundBeforeFocus, soundBeforeShortBreak, soundBeforeLongBreak);
-        PomodoroSetting.INSTANCE.saveSetting();
+        NotificationsSetting.INSTANCE.saveSetting();
 
     }
 

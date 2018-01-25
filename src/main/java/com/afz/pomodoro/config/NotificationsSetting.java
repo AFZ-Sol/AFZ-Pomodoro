@@ -2,6 +2,13 @@ package com.afz.pomodoro.config;
 
 public class NotificationsSetting extends SharedSetting {
 
+    private static final String NOTIFICATION_BEFORE_FOCUS = "NOTIFICATION_BEFORE_FOCUS";
+    private static final String NOTIFICATION_BEFORE_SHORT_BREAK = "NOTIFICATION_BEFORE_SHORT_BREAK";
+    private static final String NOTIFICATION_BEFORE_LONG_BREAK = "NOTIFICATION_BEFORE_LONG_BREAK";
+
+    private static final String SOUND_BEFORE_FOCUS_TIME = "SOUND_BEFORE_FOCUS_TIME";
+    private static final String SOUND_BEFORE_SHORT_BREAK = "SOUND_BEFORE_SHORT_BREAK";
+    private static final String SOUND_BEFORE_LONG_BREAK = "SOUND_BEFORE_LONG_BREAK";
     /**
      * Show tray notifications
      */
@@ -37,12 +44,28 @@ public class NotificationsSetting extends SharedSetting {
         System.err.println("Loading pomodoro settings.");
         super.loadSettingFromFile();
         // TODO Read and validate settings
+        notificationBeforeFocus = getBooleanProperty(NOTIFICATION_BEFORE_FOCUS, notificationBeforeFocus);
+        notificationBeforeShortBreak = getBooleanProperty(NOTIFICATION_BEFORE_SHORT_BREAK,
+                notificationBeforeShortBreak);
+        notificationBeforeLongBreak = getBooleanProperty(NOTIFICATION_BEFORE_LONG_BREAK, notificationBeforeLongBreak);
+
+        soundBeforeFocus = getBooleanProperty(SOUND_BEFORE_FOCUS_TIME, soundBeforeFocus);
+        soundBeforeShortBreak = getBooleanProperty(SOUND_BEFORE_SHORT_BREAK, soundBeforeShortBreak);
+        soundBeforeLongBreak = getBooleanProperty(SOUND_BEFORE_LONG_BREAK, soundBeforeLongBreak);
     }
 
     public void saveSetting() {
         // TODO Save curret settings in file
+        saveProperty(NOTIFICATION_BEFORE_FOCUS, Boolean.toString(notificationBeforeFocus));
+        saveProperty(NOTIFICATION_BEFORE_SHORT_BREAK, Boolean.toString(notificationBeforeShortBreak));
+        saveProperty(NOTIFICATION_BEFORE_LONG_BREAK, Boolean.toString(notificationBeforeLongBreak));
+        saveProperty(SOUND_BEFORE_FOCUS_TIME, Boolean.toString(soundBeforeFocus));
+        saveProperty(SOUND_BEFORE_SHORT_BREAK, Boolean.toString(soundBeforeShortBreak));
+        saveProperty(SOUND_BEFORE_LONG_BREAK, Boolean.toString(soundBeforeLongBreak));
+
         System.err.println("Saving pomodoro settings.");
         super.saveSettingInFile();
+
     }
 
     public boolean isNotificationBeforeFocus() {

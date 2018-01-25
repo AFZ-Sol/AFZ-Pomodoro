@@ -2,19 +2,15 @@ package com.afz.pomodoro.ui;
 
 import com.afz.pomodoro.config.PomodoroSetting;
 import com.afz.pomodoro.constants.AppConstants;
-import com.jfoenix.controls.JFXButton;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 public class PomodoroSettingUI extends BaseSettingUI {
 

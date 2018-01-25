@@ -1,7 +1,6 @@
 package com.afz.pomodoro.manager;
 
 import java.awt.TrayIcon;
-import java.awt.TrayIcon.MessageType;
 
 import com.afz.pomodoro.config.NotificationsSetting;
 
@@ -35,7 +34,7 @@ public class AlertsManager {
             showTrayNotification(SHORT_BREAK_TIME_MESSAGE);
         }
         if (NotificationsSetting.INSTANCE.isSoundBeforeShortBreak()) {
-            showSoundNotification(SHORT_BREAK_TIME_SOUND);
+            playSoundNotification(SHORT_BREAK_TIME_SOUND);
         }
     }
 
@@ -44,7 +43,7 @@ public class AlertsManager {
             showTrayNotification(LONG_BREAK_TIME_MESSAGE);
         }
         if (NotificationsSetting.INSTANCE.isSoundBeforeLongBreak()) {
-            showSoundNotification(LONG_BREAK_TIME_SOUND);
+            playSoundNotification(LONG_BREAK_TIME_SOUND);
         }
     }
 
@@ -62,16 +61,9 @@ public class AlertsManager {
 
     }
 
-    private void showSoundNotification(String sound) {
+    private void playSoundNotification(String sound) {
         // TODO play sound notification
         System.err.println("Sound play : " + sound);
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                trayIcon.displayMessage("AFZ-Pomodoro", sound, TrayIcon.MessageType.INFO);
-            }
-        });
+        
     }
 }
