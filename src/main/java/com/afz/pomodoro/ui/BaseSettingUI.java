@@ -19,7 +19,7 @@ public class BaseSettingUI {
     private static final String LBL_STYLE = "jfxLabel";
     private static final String SPINNER_STYLE = Spinner.STYLE_CLASS_SPLIT_ARROWS_HORIZONTAL;
     private static final int SPINNER_WIDTH = 100; // use css
-    private static final int TBTN_HEIGHT = 20;
+
 
     protected Label createLabel(String text) {
 
@@ -41,16 +41,17 @@ public class BaseSettingUI {
         return sp;
     }
 
-    protected JFXToggleButton createToggleButton() {
+    protected JFXToggleButton createToggleButton(String string) {
         JFXToggleButton tb = new JFXToggleButton();
-        tb.setMaxHeight(TBTN_HEIGHT);
+        tb.setText(string);
+        tb.getStyleClass().add(LBL_STYLE);
         return tb;
 
     }
 
-    protected void showDialog(AnchorPane root, String title) {
+    protected void showDialog(AnchorPane root, String title, double width, double height) {
         Stage stage = new Stage();
-        Scene scene = new Scene(root, 350, 320);
+        Scene scene = new Scene(root, width, height);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle(title);
         // This will load style from CSS

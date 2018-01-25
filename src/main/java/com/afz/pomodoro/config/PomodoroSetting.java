@@ -1,6 +1,14 @@
 package com.afz.pomodoro.config;
 
+import com.sun.javafx.tk.FocusCause;
+
 public class PomodoroSetting extends SharedSetting {
+
+    private static final String FOCUS_TIME = "FOCUS_TIME";
+    private static final String SHORT_BREAK = "SHORT_BREAK";
+    private static final String LONG_BREAK = "LONG_BREAK";
+    private static final String SESSIONS_BEFORE_LONG_BREAK = "SESSIONS_BEFORE_LONG_BREAK";
+    private static final String SESSIONS_PER_DAY = "SESSIONS_PER_DAY";
 
     private int focusTime = 25; // 25 minutes
     private int shortBreak = 5; // 5 minutes
@@ -27,11 +35,21 @@ public class PomodoroSetting extends SharedSetting {
     private void loadSetting() {
         System.err.println("Loading pomodoro settings.");
         super.loadSettingFromFile();
-        // Read and validate settings
+        // TODO Read and validate settings
+        focusTime = getIntProperty(FOCUS_TIME, focusTime);
+        shortBreak = getIntProperty(SHORT_BREAK, shortBreak);
+        longBreak = getIntProperty(LONG_BREAK, longBreak);
+        sessionsBeforeLongBreak = getIntProperty(SESSIONS_BEFORE_LONG_BREAK, sessionsBeforeLongBreak);
+        sessionsPerDay = getIntProperty(SESSIONS_PER_DAY, sessionsPerDay);
     }
 
     public void saveSetting() {
-        // Save curret settings in file
+        // TODO Save curret settings in file
+        saveProperty(FOCUS_TIME, Integer.toString(focusTime));
+        saveProperty(SHORT_BREAK, Integer.toString(shortBreak));
+        saveProperty(LONG_BREAK, Integer.toString(longBreak));
+        saveProperty(SESSIONS_BEFORE_LONG_BREAK, Integer.toString(sessionsBeforeLongBreak));
+        saveProperty(SESSIONS_PER_DAY, Integer.toString(sessionsPerDay));
         System.err.println("Saving pomodoro settings.");
         super.saveSettingInFile();
     }

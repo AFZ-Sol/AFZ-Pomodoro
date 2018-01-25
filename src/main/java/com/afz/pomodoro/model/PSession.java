@@ -5,14 +5,14 @@ public class PSession {
     /**
      * Remaining time for this session in seconds
      */
-    private int remainingDuration;
+    private int remainingSeconds;
 
     private PType type;
 
-    public PSession(String taskName, int remainingDuration, PType type) {
+    public PSession(String taskName, int remainingSeconds, PType type) {
         super();
         this.taskName = taskName;
-        this.remainingDuration = remainingDuration;
+        this.remainingSeconds = remainingSeconds;
         this.type = type;
     }
 
@@ -24,12 +24,12 @@ public class PSession {
         this.taskName = taskName;
     }
 
-    public int getRemainingDuration() {
-        return remainingDuration;
+    public int getRemainingSeconds() {
+        return remainingSeconds;
     }
 
-    public void setRemainingDuration(int remainingDuration) {
-        this.remainingDuration = remainingDuration;
+    public void setRemainingSeconds(int remainingSeconds) {
+        this.remainingSeconds = remainingSeconds;
     }
 
     public PType getType() {
@@ -42,7 +42,7 @@ public class PSession {
 
     @Override
     public String toString() {
-        return "PSession [taskName=" + taskName + ", remainingDuration=" + remainingDuration + ", type=" + type + "]";
+        return "PSession [taskName=" + taskName + ", remainingSeconds=" + remainingSeconds + ", type=" + type + "]";
     }
 
 }
