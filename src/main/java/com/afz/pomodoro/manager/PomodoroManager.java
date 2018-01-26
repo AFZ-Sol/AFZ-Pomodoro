@@ -13,6 +13,8 @@ public class PomodoroManager {
 
     private PSession currentSession;
 
+    private AlertsManager alerts = new AlertsManager();
+
     public PomodoroManager() {
         initSettings();
         prepareSession(PType.FOCUS_TIME);
@@ -24,13 +26,58 @@ public class PomodoroManager {
     }
 
     private void prepareSession(PType pType) {
-        currentSession = new PSession("TODO", pType.getDuration() * SECONDS_PER_MINUTE, pType);
+        currentSession = new PSession("TODO", pType.getDuration(), pType);
+    }
+
+    public void onFinished() {
+
+        PType nextSessionType;
+
+        if (currentSession.getType() == PType.FOCUS_TIME) {
+
+            if (goalSessions == PomodoroSetting.INSTANCE.getSessionsBeforeLongBreak() - 1) {
+                // Start long break
+                nextSessionType = PType.LONG_BREAK;
+            } else {
+                nextSessionType = PType.SHORT_BREAK;
+            }
+        } else {
+            todaySessions++;
+            goalSessions++;
+            if (currentSession.getType() == PType.LONG_BREAK) {
+                goalSessions = 0;
+            }
+            nextSessionType = PType.FOCUS_TIME;
+        }
+        triggerAlerts(nextSessionType);
+        prepareSession(nextSessionType);
+
     }
 
     ////////////////////////////////////////////////////////////////
 
+    private void triggerAlerts(PType nextSessionType) {
+
+        if (nextSessionType == PType.FOCUS_TIME) {
+            alerts.focusTimeStarted();
+        } else if (nextSessionType == PType.SHORT_BREAK) {
+            alerts.shortBreakStarted();
+        } else if (nextSessionType == PType.LONG_BREAK) {
+            alerts.longBreakStarted();
+        }
+
+    }
+
     public String getCurrentTitle() {
         return currentSession.getType().getDisplayName();
+    }
+
+    public int getCurrentSessionSeconds() {
+        return currentSession.getRemainingSeconds();
+    }
+
+    public void tick() {
+        currentSession.tick();
     }
 
     public String getRemainingTime() {
