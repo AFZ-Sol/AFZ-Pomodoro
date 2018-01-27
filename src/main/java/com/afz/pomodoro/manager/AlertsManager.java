@@ -1,15 +1,10 @@
 package com.afz.pomodoro.manager;
 
-import java.awt.AWTException;
-import java.awt.Font;
-import java.awt.MenuItem;
+import java.awt.CheckboxMenuItem;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
@@ -17,6 +12,8 @@ import javax.imageio.ImageIO;
 import com.afz.pomodoro.config.NotificationsSetting;
 
 import javafx.application.Platform;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.media.AudioClip;
 
 public class AlertsManager {
@@ -71,15 +68,13 @@ public class AlertsManager {
                 tray = SystemTray.getSystemTray();
                 BufferedImage image = ImageIO
                         .read(new URL("http://icons.iconarchive.com/icons/ampeross/qetto-2/128/clock-icon.png"));
-                
 
                 trayIcon = new TrayIcon(image, "AFZ - Pomodoro", null);
-
                 tray.add(trayIcon);
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
-                        trayIcon.displayMessage("EpmsClient", message, TrayIcon.MessageType.INFO);
+                        trayIcon.displayMessage("AFZ - Pomodoro", message, TrayIcon.MessageType.INFO);
 
                     }
                 });

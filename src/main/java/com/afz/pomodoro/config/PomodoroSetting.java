@@ -1,7 +1,5 @@
 package com.afz.pomodoro.config;
 
-import com.sun.javafx.tk.FocusCause;
-
 public class PomodoroSetting extends SharedSetting {
 
     private static final String FOCUS_TIME = "FOCUS_TIME";
