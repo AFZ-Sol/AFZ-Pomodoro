@@ -40,6 +40,10 @@ public class PSession {
         this.type = type;
     }
 
+    public void tick() {
+        remainingSeconds--;
+    }
+
     @Override
     public String toString() {
         return "PSession [taskName=" + taskName + ", remainingSeconds=" + remainingSeconds + ", type=" + type + "]";

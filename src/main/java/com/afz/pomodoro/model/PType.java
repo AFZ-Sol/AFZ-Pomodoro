@@ -4,7 +4,7 @@ public enum PType {
 
     FOCUS_TIME(25, "Focus Time"), // Focus Time
     SHORT_BREAK(5, "Short Break"), // Short break
-    LONG_BREAK(15, "Short Break"); // Long break
+    LONG_BREAK(15, "Long Break"); // Long break
 
     private int duration;
     private String displayName;

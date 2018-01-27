@@ -8,9 +8,12 @@ import java.util.ResourceBundle;
 import com.afz.pomodoro.config.PomodoroSetting;
 import com.afz.pomodoro.constants.AppConstants;
 import com.afz.pomodoro.manager.PomodoroManager;
+import com.afz.pomodoro.model.PType;
 import com.afz.pomodoro.ui.NotificationSettingUI;
 import com.afz.pomodoro.ui.PomodoroSettingUI;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
 
 public class PomodoroController implements Initializable, Observer {
 
@@ -36,6 +40,7 @@ public class PomodoroController implements Initializable, Observer {
     Button btnPause;
     /////////////////////////////////////////////////////////////
     private PomodoroManager manager;
+    private Timeline mTimeline;
 
     ////////////////////////////////////////////////////////////
 
@@ -46,14 +51,62 @@ public class PomodoroController implements Initializable, Observer {
     public void initialize(URL location, ResourceBundle resources) {
         System.err.println("Initialze");
         manager = new PomodoroManager();
-        updateGui(PomodoroSetting.INSTANCE);
+        updateGui();
+        prepareTimeline();
+
+        btnPlay.setOnAction(e -> {
+            playTimer();
+        });
+
+        btnPause.setOnAction(e -> {
+            pauseTimer();
+        });
     }
 
-    private void updateGui(PomodoroSetting setting) {
+    private void updateGui() {
         // update Gui elements with setting
-        lblTime.setText(manager.getRemainingTime());
+        lblTitle.setText(manager.getCurrentTitle());
         lblGoals.setText(manager.getGoalSessions());
         lblSessions.setText(manager.getTodaySessions());
+        updateRemainingTime();
+    }
+
+    private void updateRemainingTime() {
+        lblTime.setText(manager.getRemainingTime());
+    }
+
+    private void prepareTimeline() {
+        reset();
+        // addAttemptStyle(kind);
+
+        updateGui();
+
+        mTimeline = new Timeline();
+        mTimeline.setCycleCount(manager.getCurrentSessionSeconds());
+        mTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), e -> {
+            manager.tick();
+            updateRemainingTime();
+        }));
+        mTimeline.setOnFinished(e -> {
+            // saveCurrentAttempt();
+            manager.onFinished();
+            // Prepare next attempt
+            prepareTimeline();
+            playTimer();
+        });
+    }
+
+    private void reset() {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void playTimer() {
+        mTimeline.play();
+    }
+
+    public void pauseTimer() {
+        mTimeline.pause();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,8 +155,12 @@ public class PomodoroController implements Initializable, Observer {
 
     public void update(Observable o, Object arg) {
         if (o instanceof PomodoroSetting) {
-            System.err.println("Pomodoro settings updated." + o);
-            updateGui(PomodoroSetting.INSTANCE);
+
+            PType.FOCUS_TIME.setDuration(((PomodoroSetting) o).getFocusTime());
+            PType.SHORT_BREAK.setDuration(((PomodoroSetting) o).getShortBreak());
+            PType.LONG_BREAK.setDuration(((PomodoroSetting) o).getLongBreak());
+
+            updateGui();
         }
     }
 

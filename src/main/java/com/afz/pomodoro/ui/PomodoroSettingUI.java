@@ -90,7 +90,7 @@ public class PomodoroSettingUI extends BaseSettingUI {
         spPomodoroDuration.getValueFactory().setValue(Integer.parseInt(String.valueOf(setting.getFocusTime())));
         spShortBrakDuration.getValueFactory().setValue(Integer.parseInt(String.valueOf(setting.getShortBreak())));
         spLongBreakDuration.getValueFactory()
-                .setValue(Integer.parseInt(String.valueOf(setting.getSessionsBeforeLongBreak())));
+                .setValue(Integer.parseInt(String.valueOf(setting.getLongBreak())));
         spSessionsBeforeLongBreak.getValueFactory()
                 .setValue(Integer.parseInt(String.valueOf(setting.getSessionsBeforeLongBreak())));
         spSessionsPerDay.getValueFactory().setValue(Integer.parseInt(String.valueOf(setting.getSessionsPerDay())));
