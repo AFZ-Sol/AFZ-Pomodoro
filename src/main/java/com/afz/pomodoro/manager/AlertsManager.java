@@ -75,6 +75,7 @@ public class AlertsManager {
                     @Override
                     public void run() {
                         trayIcon.displayMessage("AFZ - Pomodoro", message, TrayIcon.MessageType.INFO);
+                        tray.remove(trayIcon);
 
                     }
                 });
@@ -89,7 +90,7 @@ public class AlertsManager {
     private void playSoundNotification(String sound) {
         // TODO play sound notification
         System.err.println("Sound play : " + sound);
-        AudioClip au = new AudioClip(getClass().getResource("/sounds/applause.mp3").toString());
+        AudioClip au = new AudioClip(getClass().getResource("/sounds/ios_notification.mp3").toString());
         au.play();
     }
 }
