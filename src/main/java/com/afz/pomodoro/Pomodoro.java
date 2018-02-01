@@ -18,6 +18,7 @@ public class Pomodoro extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("/gui/Pomodoro.fxml"));
             Scene scene = new Scene(root, 350, 250);
             primaryStage.setTitle(AppConstants.APP_TITLE);
+            primaryStage.setResizable(false);
             primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(AppConstants.ICON_APPLICATION)));
             primaryStage.setScene(scene);
             primaryStage.show();
