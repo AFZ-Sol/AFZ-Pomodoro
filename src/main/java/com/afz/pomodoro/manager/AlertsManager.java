@@ -1,20 +1,13 @@
 package com.afz.pomodoro.manager;
 
-import java.awt.CheckboxMenuItem;
-import java.awt.PopupMenu;
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
-import java.awt.image.BufferedImage;
-import java.net.URL;
-
-import javax.imageio.ImageIO;
-
 import com.afz.pomodoro.config.NotificationsSetting;
 
-import javafx.application.Platform;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class AlertsManager {
 
@@ -26,8 +19,7 @@ public class AlertsManager {
     private static final String SHORT_BREAK_TIME_SOUND = "Short break Sound.mp3";
     private static final String LONG_BREAK_TIME_SOUND = "Long break Sound.mp3";
 
-    private static TrayIcon trayIcon;
-    private static SystemTray tray;
+    TrayNotification tray = new TrayNotification();
 
     public void focusTimeStarted() {
         if (NotificationsSetting.INSTANCE.isNotificationBeforeFocus()) {
@@ -59,27 +51,15 @@ public class AlertsManager {
     }
 
     private void showTrayNotification(String message) {
-        // TODO show system tray notification
         System.err.println("Tray : " + message);
-
         try {
-
-            if (SystemTray.isSupported()) {
-                tray = SystemTray.getSystemTray();
-                BufferedImage image = ImageIO
-                        .read(new URL("http://icons.iconarchive.com/icons/ampeross/qetto-2/128/clock-icon.png"));
-
-                trayIcon = new TrayIcon(image, "AFZ - Pomodoro", null);
-                tray.add(trayIcon);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        trayIcon.displayMessage("AFZ - Pomodoro", message, TrayIcon.MessageType.INFO);
-
-                    }
-                });
-            }
-
+            // Image whatsAppImg = new Image(
+            // "https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/whatsapp-128.png");
+            tray.setTitle("AFZ - Pomodoro");
+            tray.setMessage(message);
+            tray.setNotificationType(NotificationType.INFORMATION);
+            tray.setAnimationType(AnimationType.FADE);
+            tray.showAndDismiss(Duration.seconds(3));
         } catch (Exception e) {
             e.printStackTrace();
         }
